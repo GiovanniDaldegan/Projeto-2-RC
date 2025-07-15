@@ -64,15 +64,30 @@ def setup_network():
 
 def ping(network):
     while True:
-        print_banner("XPing", desc="Escolha um host (1 a 8):")
+        print_banner("XPing", desc="Escolha um host (1 a 8; 0 para voltar):")
 
-        host = network[3][input_choice(8) + 1]
+        choice = input()
+
+        if not choice.isnumeric():
+            invalid_choice()
+            break
+
+        choice = int(choice)
+
+        if choice == 0:
+            return
+        elif choice > 8:
+            invalid_choice()
+            break
+            
+        host = network[3][choice -1]
         dest = cidr2bits(input("Selecione o endereço IP de destino: "))
         if not is_valid_addr(dest):
             input("Endereço inválido!")
             continue
 
         content = input("Digite o conteúdo da mensagem: ")
+        print()
 
         host.send_message(Message(host.addr, dest, "xping", content))
 
@@ -84,19 +99,59 @@ def traceroute(network):
     while True:
         print_banner("XTraceroute", desc="Escolha um host (1 a 8):")
 
-        host = network[3][input_choice(8) + 1]
+        choice = input()
+
+        if not choice.isnumeric():
+            invalid_choice()
+            break
+
+        choice = int(choice)
+
+        if choice == 0:
+            return
+        elif choice > 8:
+            invalid_choice()
+            break
+            
+        host = network[3][choice -1]
         dest = cidr2bits(input("Selecione o endereço IP de destino: "))
         if not is_valid_addr(dest):
             input("Endereço inválido!")
             continue
 
         content = input("Digite o conteúdo da mensagem: ")
+        print()
 
         host.send_message(Message(host.addr, dest, "xtraceroute", content))
 
         leave()
         return
 
+def view_tables(network):
+    options = ["Voltar", "c1", "a1", "a2"]
+    while True:
+        print_banner("Visualizar tabelas de roteamento", desc="Selecione um roteador:", options=options)
+
+        choice = input_choice(len(options))
+
+        match (choice):
+            case 0:
+                return
+            case 1:
+                print("-" * 48)
+                print(f"|{"c1":^46s}|")
+                network[0][0].print_table()
+                input()
+            case 2:
+                print("-" * 48)
+                print(f"|{"a1":^46s}|")
+                network[1][0].print_table()
+                input()
+            case 3:
+                print("-" * 48)
+                print(f"|{"a2":^46s}|")
+                network[1][1].print_table()
+                input()
 
 def command_menu():
     options = ["Voltar", "XPing", "XTraceroute"]
@@ -118,7 +173,7 @@ def command_menu():
 
 
 def menu():
-    options = ["Sair", "Iniciar simulador"]
+    options = ["Sair", "Comandos", "Visualizar tabelas de roteamento"]
 
     while True:
         print_banner("Simulador de Rede", "Projeto 2 de Redes de Computadores\nSelecione uma opção", options)
@@ -131,6 +186,8 @@ def menu():
                 return
             case 1:
                 command_menu()
+            case 2:
+                view_tables(setup_network())
             case _:
                 invalid_choice()
                 

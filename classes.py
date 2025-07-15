@@ -1,29 +1,6 @@
-
-# ideia. usar essas classes pra ir adicionando roteadores e switchs e hosts até
-# a gnt ter uma rede em topologia de árvore
-
-# a gnt teria um menu poder escolher um host pra controlar. dele a gnt pode
-# mandar mensagens ICMP de mentirinha de ping e traceroute. daí nosso host manda
-# a mensagem pro switch (informando IPs origem e destino), que decide se manda
-# pra outro host ou se sobe pra um roteador. depois o roteador escolhe tbm se
-# sobe ou desce na rede, sempre com base no IP destino
-
-# aí vamo ter q definir oq cada dispositivo vai fzr quando recebe msg (responde,
-# só encaminha, descarta) e como o nosso host printa oq ele recebe
-# ainda vou pesquisar mlr pra saber oq rola no traceroute
-
-# obs: tô pensando em fzr algo mais parecido com o processo real, mas a gnt pode
-# simplificar por conta do tempo
-
-
-# root
-# a1             a2
-# e1     e2      e3     e4
-# h1 h2  h3 h4   h5 h6  h7 h8
-
 from time import sleep
 from funcs import *
-
+from utils import *
 
 class Message:
     def __init__(self, src:str, dest:str, m_type:str, content):
@@ -49,7 +26,7 @@ class Host:
     def get_message(self, msg :Message):
         msg.add_time(self.delay)
 
-        print("src:", bits2cidr(msg.src), "dest:", bits2cidr(msg.dest), msg.time, msg.content)
+        print(f"src: {bits2cidr(msg.src)}, dest: {bits2cidr(msg.dest)} - {msg.time}ms  {msg.content}")
 
     def set_parent(self, parent):
         self.parent = parent
@@ -112,6 +89,14 @@ class Router:
 
         if addr:
             self.addr = cidr2bits(addr)
+    
+    def print_table(self):
+        print("-" * 48)
+        print(f"|{"Endereço":^34s}|{"Interface":^11s}|")
+        print("-" * 48)
+        for i in self.table:
+            print(f"|{i[0]:^34s}|{str(i[1]):^11s}|")
+            print("-" * 48)
 
     def set_parent(self, parent):
         self.parent = parent
@@ -129,9 +114,11 @@ class Router:
 
         if msg.type == "xtraceroute":
             if hasattr(self, "addr"):
-                print(bits2cidr(self.addr))
+                print(bits2cidr(self.addr), end="")
             else:
-                print(bits2cidr(self.left.addr)[:-1] + "1")
+                print(bits2cidr(self.left.addr)[:-1] + "1", end="")
+
+            print(f" - {msg.time}ms")
 
         # encaminhamento
         #print(f"encaminhando... destino: {msg.dest} decisão:", find_match(self.table, msg.dest))

@@ -43,7 +43,7 @@ def input_choice(n_options:int):
     return choice
 
 def leave():
-    input("Aperte qualquer tecla para voltar.")
+    input("\nAperte qualquer tecla para voltar.")
 
 def invalid_choice():
     input("Opção inválida.")
