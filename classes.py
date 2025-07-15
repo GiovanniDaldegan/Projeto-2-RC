@@ -21,15 +21,17 @@
 # e1     e2      e3     e4
 # h1 h2  h3 h4   h5 h6  h7 h8
 
-
+from time import sleep
 from funcs import *
 
 
 class Message:
-    def __init__(self, src:str, dest:str, m_type:str):
+    def __init__(self, src:str, dest:str, m_type:str, content):
         self.src = src
-        self.dest = dest
+        self.dest = cidr2bits(dest)
+
         self.type = m_type
+        self.content = content
         self.time = 0
     
     def add_time(self, time):
@@ -37,26 +39,32 @@ class Message:
 
 
 class Host:
-    def __init__(self, addr :str):
-        self.addr = addr
-    
+    def __init__(self, addr :str, delay :int):
+        self.addr = cidr2bits(addr)
+        self.delay = delay
+
+    def send_message(self, msg :Message):
+        self.parent.get_message(msg)
+
     def get_message(self, msg :Message):
-        print(msg.src, msg.dest, msg.time)
-    
+        msg.add_time(self.delay)
+
+        print("src:", bits2cidr(msg.src), "dest:", bits2cidr(msg.dest), msg.time, msg.content)
+
     def set_parent(self, parent):
         self.parent = parent
 
 
 class Switch:
     def __init__(self, addr, left_host :Host, right_host :Host, delay :int):
-        self.addr = addr
+        self.addr = cidr2bits(addr)
+
+        left_host.set_parent(self)
+        right_host.set_parent(self)
 
         self.left = left_host
         self.right = right_host
         self.delay = delay
-
-        left_host.parent = self
-        right_host.parent = self
 
     def set_parent(self, parent):
         self.parent = parent
@@ -72,45 +80,62 @@ class Switch:
             self.parent.get_message(msg)
 
     def get_message(self, msg :Message):
+        sleep(1)
         msg.add_time(self.delay)
 
-        print("switch", msg.type)
+        #print(f"switch {msg.type}, {bits2cidr(self.addr)}")
+
+        #print(bits2cidr(self.left.addr), bits2cidr(self.right.addr), bits2cidr(msg.dest))
 
         if self.left.addr == msg.dest:
-            self.left.get_message()
+            self.left.get_message(msg)
 
         elif self.right.addr == msg.dest:
-            self.right.get_message()
+            self.right.get_message(msg)
+
+        else:
+            self.parent.get_message(msg)
 
 
 class Router:
-    def __init__(self, left, left_addr, right, right_addr, delay, table):
+    def __init__(self, left, right, delay, table, addr :str=None):
         self.left = left
-        self.left_addr = left_addr
-
-        self.right_addr = right_addr
         self.right = right
 
         self.delay = delay
+
+        for i in range(len(table)):
+            table[i][0] = cidr2bits(table[i][0])
+
         self.table = table
+        #input(self.table)
+
+        if addr:
+            self.addr = cidr2bits(addr)
 
     def set_parent(self, parent):
         self.parent = parent
 
-    def get_message(self, msg :Message, child):
+    def get_message(self, msg :Message):
+        sleep(1)
         msg.add_time(self.delay)
 
-        print("router", msg.type)
+        #print(f"router, {msg.type},", end=" ")
+        #print(bits2cidr(self.addr) if hasattr(self, 'addr') else "")
+
+        #if not hasattr(self, "addr"):
+        #    print("CGEOH")
+
 
         if msg.type == "xtraceroute":
-            if child == 0:
-                print(self.left_addr)
+            if hasattr(self, "addr"):
+                print(bits2cidr(self.addr))
             else:
-                print(self.right_addr)
+                print(bits2cidr(self.left.addr)[:-1] + "1")
 
         # encaminhamento
-        # match (find_match(self.table, msg.dest)):
-        match (find_match(["010", "011"], "0111")):
+        #print(f"encaminhando... destino: {msg.dest} decisão:", find_match(self.table, msg.dest))
+        match (find_match(self.table, msg.dest)):
             case 0:
                 self.left.get_message(msg)
             case 1:
@@ -118,5 +143,5 @@ class Router:
             case _:
                 if self.parent:
                     self.parent.get_message(msg)
-
-
+                else:
+                    print("Pacote descartado.", msg.content)
