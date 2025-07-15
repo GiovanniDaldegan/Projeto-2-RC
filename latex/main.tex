@@ -458,14 +458,14 @@ Cada elemento está identificado no diagrama abaixo, com seus respectivos endere
 
 \textbf{Tipos e capacidades dos enlaces:}
 \begin{itemize}
-    \item \textbf{Cabo de Par Trançado (UTP) de 1 Gbps}: Utilizado entre switches de borda e hosts. Solução econômica, ideal para curtas distâncias em racks adjacentes, com largura de banda suficiente para aplicações corporativas.
-    \item \textbf{Fibra Óptica de 10 Gbps}: Utilizada nos enlaces de agregação entre switches de borda e roteadores de agregação. Garante alto desempenho, evita gargalos e suporta maiores distâncias sem perda de sinal, sendo imune a interferências eletromagnéticas.
-    \item \textbf{Fibra Óptica de 40 Gbps}: Utilizada no backbone/core da rede, entre o switch central e os roteadores de agregação. Proporciona arquitetura não-bloqueante, alta escalabilidade e desempenho, eliminando gargalos mesmo em picos de tráfego.
+    \item \textbf{Cabo de Par Trançado (UTP) de 1 Gbps} - Econômico, ideal para curtas distâncias entre hosts e switches de borda, com desempenho suficiente para aplicações corporativas.
+    \item \textbf{Fibra Óptica de 10 Gbps} - Usada na agregação, suporta grandes volumes de tráfego e distâncias maiores, garantindo desempenho e confiabilidade.
+    \item \textbf{Fibra Óptica de 40 Gbps} - Backbone do data center, oferece alta capacidade, baixa latência e escalabilidade para o núcleo da rede.
 \end{itemize}
 
 \section{Especificações da Rede}
 
-A topologia da rede segue o modelo hierárquico em árvore, conforme ilustrado no diagrama da figura 1
+A topologia da rede segue o modelo hierárquico em árvore, conforme ilustrado no diagrama da figura 1.
 % Diagrama da topologia
 %\begin{figure}[!h]
 %\centering
@@ -506,18 +506,21 @@ c1-a2 & 192.168.1.4 & /30 & 192.168.1.5--6 & 192.168.1.7 \\
 \caption{Endereçamento das sub-redes e enlaces}
 \end{table}
 
-\textbf{Enlaces:}
-\begin{itemize}
-    \item \textbf{Cabo de Par Trançado (UTP) de 1 Gbps}: Econômico, ideal para curtas distâncias entre hosts e switches de borda.
-    \item \textbf{Fibra Óptica de 10 Gbps}: Utilizada nos enlaces de agregação, suporta grandes volumes de tráfego e distâncias maiores.
-    \item \textbf{Fibra Óptica de 40 Gbps}: Backbone do data center, garante alta capacidade, baixa latência e escalabilidade.
-\end{itemize}
+% \textbf{Enlaces:}
+% \begin{itemize}
+%     \item \textbf{Cabo de Par Trançado (UTP) de 1 Gbps}: Econômico, ideal para curtas distâncias entre hosts e switches de borda.
+%     \item \textbf{Fibra Óptica de 10 Gbps}: Utilizada nos enlaces de agregação, suporta grandes volumes de tráfego e distâncias maiores.
+%     \item \textbf{Fibra Óptica de 40 Gbps}: Backbone do data center, garante alta capacidade, baixa latência e escalabilidade.
+% \end{itemize}
 
-\subsection{Tabelas de Roteamento}
+% \subsection{Tabelas de Roteamento}
 
-Cada roteador/agregador possui uma tabela de roteamento estática, definida conforme as sub-redes e enlaces conectados. (Adicione aqui as tabelas específicas de cada roteador, se necessário.)
+% Cada roteador/agregador possui uma tabela de roteamento estática, definida conforme as sub-redes e enlaces conectados. (Adicione aqui as tabelas específicas de cada roteador, se necessário.)
 
 \section{Simulação de Rede}
+
+O código-fonte da simulação, bem como instruções de uso e exemplos, está disponível em: \\ 
+\url{https://github.com/GiovanniDaldegan/Projeto-2-RC/}
 
 A topologia definida foi implementada em simulador de grafos, permitindo a execução dos comandos XPing e XTraceroute:
 
@@ -539,14 +542,14 @@ A topologia definida foi implementada em simulador de grafos, permitindo a execu
     \item Exibição das estatísticas de rota
 \end{itemize}
 
-\subsection{Resultados da Simulação}
+% \subsection{Resultados da Simulação}
 
-(Aqui devem ser inseridos os resultados dos comandos XPing e XTraceroute, com análise da corretude em função das tabelas de roteamento.)
+% (Aqui devem ser inseridos os resultados dos comandos XPing e XTraceroute, com análise da corretude em função das tabelas de roteamento.)
 
-\subsection{Vídeo de Demonstração}
+% \subsection{Vídeo de Demonstração}
 
-O funcionamento do simulador e dos comandos foi gravado e está disponível em: \\ 
-\url{<link_para_video>}
+% O funcionamento do simulador e dos comandos foi gravado e está disponível em: \\ 
+% \url{<link_para_video>}
 
 \section{Conclusão}
 
