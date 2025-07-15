@@ -176,7 +176,7 @@ def menu():
     options = ["Sair", "Comandos", "Visualizar tabelas de roteamento"]
 
     while True:
-        print_banner("Simulador de Rede", "Projeto 2 de Redes de Computadores\nSelecione uma opção", options)
+        print_banner("Projeto 2 - Redes de Computadores", "SIMULADOR DE REDE","Selecione uma opção:\n", options)
 
         choice = input_choice(len(options))
 
@@ -191,7 +191,6 @@ def menu():
             case _:
                 invalid_choice()
                 
-
 
 if __name__ == "__main__":
     menu()
