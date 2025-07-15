@@ -1,7 +1,8 @@
 import os
 
 
-def print_banner(title :str=None, desc : str, options :list[str]=None):
+def print_banner(title :str=None, desc : str=None, options :list[str]=None):
+    clear()
     if title:
         print("=" * 24)
         print(f"{title:^24s}")
@@ -41,3 +42,8 @@ def input_choice(n_options:int):
     
     return choice
 
+def leave():
+    input("Aperte qualquer tecla para voltar.")
+
+def invalid_choice():
+    input("Opção inválida.")
