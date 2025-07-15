@@ -2,6 +2,7 @@ import os
 
 
 def print_banner(title :str=None, subtitle : str=None, desc : str=None, options :list[str]=None):
+    clear()
     if title:
         print("\033[1;34m=" * 150)
         print(f"{title:^150s}")
@@ -47,3 +48,8 @@ def input_choice(n_options:int):
 
     return choice
 
+def leave():
+    input("\nAperte qualquer tecla para voltar.")
+
+def invalid_choice():
+    input("Opção inválida.")
