@@ -1,18 +1,22 @@
 import os
 
 
-def print_banner(title :str=None, desc : str, options :list[str]=None):
+def print_banner(title :str=None, subtitle : str=None, desc : str=None, options :list[str]=None):
     if title:
-        print("=" * 24)
-        print(f"{title:^24s}")
-        print("=" * 24)
+        print("\033[1;34m=" * 150)
+        print(f"{title:^150s}")
+        print("\033[1;34m=\033[m" * 150)
+
+    if subtitle:
+        print("\033[1;32m")
+        print(f"{subtitle:^150s}\033[m")
 
     if desc:
-        print(desc)
+        print(f"\033[1m{desc}\033[m")
 
     if options:
         for i in range(len(options)):
-            print(f"{i} - {options[i]}")
+            print(f"\033[1m[{i}] {options[i]}\033[m")
 
 
 def clear():
@@ -32,12 +36,14 @@ def input_choice(n_options:int):
     choice = input()
 
     if not choice.isnumeric():
+        clear()
         return -1
     
     choice = int(choice)
 
     if choice < 0 or choice > n_options -1:
+        clear()
         return -1
-    
+
     return choice
 

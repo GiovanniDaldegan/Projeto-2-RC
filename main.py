@@ -2,12 +2,12 @@ from classes import *
 from utils import *
 
 def menu():
-    options = ["Sair", "Iniciar simulador"]
+    options = ["Sair", "Executar Xping", "Executar XTraceroute" ]
 
     while True:
-        print_banner("Simulador de Rede", "Projeto 2 de Redes de Computadores\nSelecione uma opção", options)
+        print_banner("Projeto 2 - Redes de Computadores", "SIMULADOR DE REDE","Selecione uma opção:\n", options)
         
-        choice = input_choice()
+        choice = input_choice(len(options))
 
 
 if __name__ == "__main__":
