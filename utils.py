@@ -2,6 +2,7 @@ import os
 
 
 def print_banner(title :str=None, subtitle : str=None, desc : str=None, options :list[str]=None):
+    clear()
     if title:
         print("\033[1;34m=" * 150)
         print(f"{title:^150s}")
