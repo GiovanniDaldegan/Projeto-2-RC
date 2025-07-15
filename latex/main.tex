@@ -515,54 +515,45 @@ c1-a2 & 192.168.1.4 & /30 & 192.168.1.5--6 & 192.168.1.7 \\
 
 \subsection{Tabelas de Roteamento}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
-\small
-\begin{tabular}{|c|c|c|c|}
-\hline
-Destino & Máscara & Próximo salto & Interface \\
-\hline
-192.168.0.0 & /27 & a1 & c1-a1 \\
-192.168.0.32 & /27 & a1 & c1-a1 \\
-192.168.0.64 & /27 & a2 & c1-a2 \\
-192.168.0.96 & /27 & a2 & c1-a2 \\
-\hline
-\end{tabular}
-\caption{Tabela de roteamento do roteador Core (c1)}
-\end{table}
+\includegraphics[width=0.45\textwidth]{../media/bits c1.png}
+\caption{Tabela de roteamento do roteador Core (c1) - formato bits}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
-\small
-\begin{tabular}{|c|c|c|c|}
-\hline
-Destino & Máscara & Próximo salto & Interface \\
-\hline
-192.168.0.0 & /27 & - & a1-e1 \\
-192.168.0.32 & /27 & - & a1-e2 \\
-192.168.0.64 & /27 & c1 & a1-c1 \\
-192.168.0.96 & /27 & c1 & a1-c1 \\
-\hline
-\end{tabular}
-\caption{Tabela de roteamento do roteador de agregação a1}
-\end{table}
+\includegraphics[width=0.45\textwidth]{../media/cidr c1.png}
+\caption{Tabela de roteamento do roteador Core (c1) - formato CIDR}
+\end{figure}
 
-\begin{table}[h]
+\begin{figure}[h]
 \centering
-\small
-\begin{tabular}{|c|c|c|c|}
-\hline
-Destino & Máscara & Próximo salto & Interface \\
-\hline
-192.168.0.64 & /27 & - & a2-e3 \\
-192.168.0.96 & /27 & - & a2-e4 \\
-192.168.0.0 & /27 & c1 & a2-c1 \\
-192.168.0.32 & /27 & c1 & a2-c1 \\
-\hline
-\end{tabular}
-\caption{Tabela de roteamento do roteador de agregação a2}
-\end{table}
+\includegraphics[width=0.45\textwidth]{../media/bits a1.png}
+\caption{Tabela de roteamento do roteador de agregação a1 - formato bits}
+\end{figure}
 
+\clearpage
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{../media/cidr a1.png}
+\caption{Tabela de roteamento do roteador de agregação a1 - formato CIDR}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{../media/bits a2.png}
+\caption{Tabela de roteamento do roteador de agregação a2 - formato bits}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[width=0.45\textwidth]{../media/cidr a2.png}
+\caption{Tabela de roteamento do roteador de agregação a2 - formato CIDR}
+\end{figure}
+
+\newpage
 \section{Simulação de Rede}
 
 O código-fonte, instruções e exemplos da implementação estão disponíveis no repositório do projeto: \\ 
@@ -590,12 +581,10 @@ A topologia definida foi implementada em simulador de grafos, permitindo a execu
 
 \subsection{Resultados da Simulação}
 
-(Aqui devem ser inseridos os resultados dos comandos XPing e XTraceroute, com análise da corretude em função das tabelas de roteamento.)
-
-\subsection{Vídeo de Demonstração}
-
 A apresentação do funcionamento do simulador e dos comandos XPing e XTraceroute pode ser assistida em: \\ 
-\url{https://youtu.be/2AqziPM5zZE}
+\url{https://youtu.be/2AqziPM5zZE} \\
+Obtivemos resultados satisfatórios na simulação para XPing e XTraceroute, demonstrando a correta configuração da rede e a funcionalidade dos comandos. \\
+O XPing confirmou a conectividade entre os hosts, enquanto o XTraceroute forneceu informações detalhadas sobre as rotas percorridas pelos pacotes, como é possível observar no vídeo disponibilizado.
 
 \section{Conclusão}
 
