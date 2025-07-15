@@ -444,7 +444,7 @@ Cada elemento está identificado no diagrama abaixo, com seus respectivos endere
 
 \begin{figure}[!h]
 \centering
-\includegraphics[width=0.45\textwidth]{../media/Cópia do Diagrama sem nome.drawio(1).png}
+\includegraphics[width=0.45\textwidth]{../media/diagrama.png}
 \caption{Diagrama da topologia de rede em árvore}
 \label{fig:topologia_projeto2}
 \end{figure}
@@ -457,11 +457,18 @@ Cada elemento está identificado no diagrama abaixo, com seus respectivos endere
 
 \textbf{Tipos e capacidades dos enlaces:}
 \begin{itemize}
-    \item Fibra Óptica 10 Gbps: enlaces entre switches centrais, agregação e borda
-    \item Par Trançado 1 Gbps: enlaces entre switches de borda e hosts
+    \item \textbf{Cabo de Par Trançado (UTP) de 1 Gbps}: Utilizado entre switches de borda e hosts. Solução econômica, ideal para curtas distâncias em racks adjacentes, com largura de banda suficiente para aplicações corporativas.
+    \item \textbf{Fibra Óptica de 10 Gbps}: Utilizada nos enlaces de agregação entre switches de borda e roteadores de agregação. Garante alto desempenho, evita gargalos e suporta maiores distâncias sem perda de sinal, sendo imune a interferências eletromagnéticas.
+    \item \textbf{Fibra Óptica de 40 Gbps}: Utilizada no backbone/core da rede, entre o switch central e os roteadores de agregação. Proporciona arquitetura não-bloqueante, alta escalabilidade e desempenho, eliminando gargalos mesmo em picos de tráfego.
 \end{itemize}
 
-\textbf{Justificativa:} A utilização de fibra óptica nos enlaces principais garante alta capacidade e baixa latência, enquanto o par trançado é suficiente para a conexão dos hosts.
+\textbf{Justificativa das escolhas de enlaces:}
+
+Cabo de Par Trançado (UTP) de 1 Gbps – A utilização de cabos UTP (Unshielded Twisted Pair) foi escolhida por ser uma solução mais econômica em comparação à fibra óptica, tanto em termos de cabeamento quanto de portas de rede. Em data centers, é comum que os servidores estejam localizados no mesmo rack ou em racks adjacentes ao switch de borda, o que torna a distância de transmissão ideal para o uso de cabos UTP sem prejuízo de desempenho. A velocidade de 1 Gbps é amplamente adotada como padrão no mercado e oferece largura de banda suficiente para a maioria das aplicações corporativas. Dessa forma, o uso de cabos UTP representa uma alternativa econômica e de fácil implementação.
+
+Fibra Óptica de 10 Gbps – A utilização de fibra óptica no enlace de agregação de tráfego é essencial para garantir alto desempenho e evitar gargalos na rede. Esse enlace é responsável por concentrar o tráfego gerado por todos os hosts conectados aos switches de borda, exigindo, portanto, uma largura de banda elevada. A velocidade de 10 Gbps permite a agregação eficiente desse tráfego, atendendo à demanda com folga. Além disso, como os switches de borda podem estar localizados em fileiras de racks distintas dos roteadores de agregação, a fibra óptica se mostra ideal por suportar maiores distâncias sem perda de sinal e por ser imune a interferências eletromagnéticas. Assim, a adoção de enlaces ópticos de 10 Gbps assegura que os dados trafeguem da camada de acesso para a camada de agregação com velocidade, estabilidade e confiabilidade.
+
+Fibra Óptica de 40 Gbps – Esse é o enlace mais crítico da rede, responsável por encaminhar todo o tráfego agregado das camadas inferiores. A escolha da fibra óptica garante alta capacidade e imunidade a interferências, enquanto a velocidade de 40 Gbps assegura uma arquitetura não-bloqueante, eliminando gargalos mesmo em picos de tráfego. Além disso, essa largura de banda elevada oferece escalabilidade, permitindo o crescimento da rede sem necessidade imediata de upgrade na infraestrutura do core. Trata-se do backbone do data center, fundamental para manter alto desempenho, baixa latência e confiabilidade na comunicação entre os diferentes segmentos da rede.
 
 \subsection{Endereçamento IP e Sub-redes}
 
