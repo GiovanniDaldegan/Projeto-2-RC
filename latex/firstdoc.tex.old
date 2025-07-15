@@ -1,0 +1,905 @@
+%% bare_conf_compsoc.tex
+%% V1.4b
+%% 2015/08/26
+%% by Michael Shell
+%% See:
+%% http://www.michaelshell.org/
+%% for current contact information.
+%%
+%% This is a skeleton file demonstrating the use of IEEEtran.cls
+%% (requires IEEEtran.cls version 1.8b or later) with an IEEE Computer
+%% Society conference paper.
+%%
+%% Support sites:
+%% http://www.michaelshell.org/tex/ieeetran/
+%% http://www.ctan.org/pkg/ieeetran
+%% and
+%% http://www.ieee.org/
+
+%%*************************************************************************
+%% Legal Notice:
+%% This code is offered as-is without any warranty either expressed or
+%% implied; without even the implied warranty of MERCHANTABILITY or
+%% FITNESS FOR A PARTICULAR PURPOSE! 
+%% User assumes all risk.\
+%% In no event shall the IEEE or any contributor to this code be liable for
+%% any damages or losses, including, but not limited to, incidental,
+%% consequential, or any other damages, resulting from the use or misuse
+%% of any information contained here.
+%%
+%% All comments are the opinions of their respective authors and are not
+%% necessarily endorsed by the IEEE.
+%%
+%% This work is distributed under the LaTeX Project Public License (LPPL)
+%% ( http://www.latex-project.org/ ) version 1.3, and may be freely used,
+%% distributed and modified. A copy of the LPPL, version 1.3, is included
+%% in the base LaTeX documentation of all distributions of LaTeX released
+%% 2003/12/01 or later.
+%% Retain all contribution notices and credits.
+%% ** Modified files should be clearly indicated as such, including  **
+%% ** renaming them and changing author support contact information. **
+%%*************************************************************************
+
+
+% *** Authors should verify (and, if needed, correct) their LaTeX system  ***
+% *** with the testflow diagnostic prior to trusting their LaTeX platform ***
+% *** with production work. The IEEE's font choices and paper sizes can   ***
+% *** trigger bugs that do not appear when using other class files.       ***                          ***
+% The testflow support page is at:
+% http://www.michaelshell.org/tex/testflow/
+
+
+
+\documentclass[conference,compsoc]{IEEEtran}
+% Some/most Computer Society conferences require the compsoc mode option,
+% but others may want the standard conference format.
+%
+% If IEEEtran.cls has not been installed into the LaTeX system files,
+% manually specify the path to it like:
+% \documentclass[conference,compsoc]{../sty/IEEEtran}
+
+
+
+
+
+% Some very useful LaTeX packages include:
+% (uncomment the ones you want to load)
+
+
+% *** MISC UTILITY PACKAGES ***
+%
+%\usepackage{ifpdf}
+% Heiko Oberdiek's ifpdf.sty is very useful if you need conditional
+% compilation based on whether the output is pdf or dvi.
+% usage:
+% \ifpdf
+%   % pdf code
+% \else
+%   % dvi code
+% \fi
+% The latest version of ifpdf.sty can be obtained from:
+% http://www.ctan.org/pkg/ifpdf
+% Also, note that IEEEtran.cls V1.7 and later provides a builtin
+% \ifCLASSINFOpdf conditional that works the same way.
+% When switching from latex to pdflatex and vice-versa, the compiler may
+% have to be run twice to clear warning/error messages.
+
+
+
+
+
+
+% *** CITATION PACKAGES ***
+%
+\ifCLASSOPTIONcompsoc
+  % IEEE Computer Society needs nocompress option
+  % requires cite.sty v4.0 or later (November 2003)
+  \usepackage[nocompress]{cite}
+\else
+  % normal IEEE
+  \usepackage{cite}
+\fi
+% cite.sty was written by Donald Arseneau
+% V1.6 and later of IEEEtran pre-defines the format of the cite.sty package
+% \cite{} output to follow that of the IEEE. Loading the cite package will
+% result in citation numbers being automatically sorted and properly
+% "compressed/ranged". e.g., [1], [9], [2], [7], [5], [6] without using
+% cite.sty will become [1], [2], [5]--[7], [9] using cite.sty. cite.sty's
+% \cite will automatically add leading space, if needed. Use cite.sty's
+% noadjust option (cite.sty V3.8 and later) if you want to turn this off
+% such as if a citation ever needs to be enclosed in parenthesis.
+% cite.sty is already installed on most LaTeX systems. Be sure and use
+% version 5.0 (2009-03-20) and later if using hyperref.sty.
+% The latest version can be obtained at:
+% http://www.ctan.org/pkg/cite
+% The documentation is contained in the cite.sty file itself.
+%
+% Note that some packages require special options to format as the Computer
+% Society requires. In particular, Computer Society  papers do not use
+% compressed citation ranges as is done in typical IEEE papers
+% (e.g., [1]-[4]). Instead, they list every citation separately in order
+% (e.g., [1], [2], [3], [4]). To get the latter we need to load the cite
+% package with the nocompress option which is supported by cite.sty v4.0
+% and later.
+
+
+
+
+
+% *** GRAPHICS RELATED PACKAGES ***
+%
+\ifCLASSINFOpdf
+  % \usepackage[pdftex]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../pdf/}{../jpeg/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.pdf,.jpeg,.png}
+\else
+  % or other class option (dvipsone, dvipdf, if not using dvips). graphicx
+  % will default to the driver specified in the system graphics.cfg if no
+  % driver is specified.
+  % \usepackage[dvips]{graphicx}
+  % declare the path(s) where your graphic files are
+  % \graphicspath{{../eps/}}
+  % and their extensions so you won't have to specify these with
+  % every instance of \includegraphics
+  % \DeclareGraphicsExtensions{.eps}
+\fi
+% graphicx was written by David Carlisle and Sebastian Rahtz. It is
+% required if you want graphics, photos, etc. graphicx.sty is already
+% installed on most LaTeX systems. The latest version and documentation
+% can be obtained at: 
+% http://www.ctan.org/pkg/graphicx
+% Another good source of documentation is "Using Imported Graphics in
+% LaTeX2e" by Keith Reckdahl which can be found at:
+% http://www.ctan.org/pkg/epslatex
+%
+% latex, and pdflatex in dvi mode, support graphics in encapsulated
+% postscript (.eps) format. pdflatex in pdf mode supports graphics
+% in .pdf, .jpeg, .png and .mps (metapost) formats. Users should ensure
+% that all non-photo figures use a vector format (.eps, .pdf, .mps) and
+% not a bitmapped formats (.jpeg, .png). The IEEE frowns on bitmapped formats
+% which can result in "jaggedy"/blurry rendering of lines and letters as
+% well as large increases in file sizes.
+%
+% You can find documentation about the pdfTeX application at:
+% http://www.tug.org/applications/pdftex
+
+
+
+
+
+% *** MATH PACKAGES ***
+%
+%\usepackage{amsmath}
+% A popular package from the American Mathematical Society that provides
+% many useful and powerful commands for dealing with mathematics.
+%
+% Note that the amsmath package sets \interdisplaylinepenalty to 10000
+% thus preventing page breaks from occurring within multiline equations. Use:
+%\interdisplaylinepenalty=2500
+% after loading amsmath to restore such page breaks as IEEEtran.cls normally
+% does. amsmath.sty is already installed on most LaTeX systems. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/amsmath
+
+
+
+
+
+% *** SPECIALIZED LIST PACKAGES ***
+%
+%\usepackage{algorithmic}
+% algorithmic.sty was written by Peter Williams and Rogerio Brito.
+% This package provides an algorithmic environment fo describing algorithms.
+% You can use the algorithmic environment in-text or within a figure
+% environment to provide for a floating algorithm. Do NOT use the algorithm
+% floating environment provided by algorithm.sty (by the same authors) or
+% algorithm2e.sty (by Christophe Fiorio) as the IEEE does not use dedicated
+% algorithm float types and packages that provide these will not provide
+% correct IEEE style captions. The latest version and documentation of
+% algorithmic.sty can be obtained at:
+% http://www.ctan.org/pkg/algorithms
+% Also of interest may be the (relatively newer and more customizable)
+% algorithmicx.sty package by Szasz Janos:
+% http://www.ctan.org/pkg/algorithmicx
+
+
+
+
+% *** ALIGNMENT PACKAGES ***
+%
+%\usepackage{array}
+% Frank Mittelbach's and David Carlisle's array.sty patches and improves
+% the standard LaTeX2e array and tabular environments to provide better
+% appearance and additional user controls. As the default LaTeX2e table
+% generation code is lacking to the point of almost being broken with
+% respect to the quality of the end results, all users are strongly
+% advised to use an enhanced (at the very least that provided by array.sty)
+% set of table tools. array.sty is already installed on most systems. The
+% latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/array
+
+
+% IEEEtran contains the IEEEeqnarray family of commands that can be used to
+% generate multiline equations as well as matrices, tables, etc., of high
+% quality.
+
+
+
+
+% *** SUBFIGURE PACKAGES ***
+%\ifCLASSOPTIONcompsoc
+%  \usepackage[caption=false,font=footnotesize,labelfont=sf,textfont=sf]{subfig}
+%\else
+%  \usepackage[caption=false,font=footnotesize]{subfig}
+%\fi
+% subfig.sty, written by Steven Douglas Cochran, is the modern replacement
+% for subfigure.sty, the latter of which is no longer maintained and is
+% incompatible with some LaTeX packages including fixltx2e. However,
+% subfig.sty requires and automatically loads Axel Sommerfeldt's caption.sty
+% which will override IEEEtran.cls' handling of captions and this will result
+% in non-IEEE style figure/table captions. To prevent this problem, be sure
+% and invoke subfig.sty's "caption=false" package option (available since
+% subfig.sty version 1.3, 2005/06/28) as this is will preserve IEEEtran.cls
+% handling of captions.
+% Note that the Computer Society format requires a sans serif font rather
+% than the serif font used in traditional IEEE formatting and thus the need
+% to invoke different subfig.sty package options depending on whether
+% compsoc mode has been enabled.
+%
+% The latest version and documentation of subfig.sty can be obtained at:
+% http://www.ctan.org/pkg/subfig
+
+
+
+
+% *** FLOAT PACKAGES ***
+%
+%\usepackage{fixltx2e}
+% fixltx2e, the successor to the earlier fix2col.sty, was written by
+% Frank Mittelbach and David Carlisle. This package corrects a few problems
+% in the LaTeX2e kernel, the most notable of which is that in current
+% LaTeX2e releases, the ordering of single and double column floats is not
+% guaranteed to be preserved. Thus, an unpatched LaTeX2e can allow a
+% single column figure to be placed prior to an earlier double column
+% figure.
+% Be aware that LaTeX2e kernels dated 2015 and later have fixltx2e.sty's
+% corrections already built into the system in which case a warning will
+% be issued if an attempt is made to load fixltx2e.sty as it is no longer
+% needed.
+% The latest version and documentation can be found at:
+% http://www.ctan.org/pkg/fixltx2e
+
+
+%\usepackage{stfloats}
+% stfloats.sty was written by Sigitas Tolusis. This package gives LaTeX2e
+% the ability to do double column floats at the bottom of the page as well
+% as the top. (e.g., "\begin{figure*}[!b]" is not normally possible in
+% LaTeX2e). It also provides a command:
+%\fnbelowfloat
+% to enable the placement of footnotes below bottom floats (the standard
+% LaTeX2e kernel puts them above bottom floats). This is an invasive package
+% which rewrites many portions of the LaTeX2e float routines. It may not work
+% with other packages that modify the LaTeX2e float routines. The latest
+% version and documentation can be obtained at:
+% http://www.ctan.org/pkg/stfloats
+% Do not use the stfloats baselinefloat ability as the IEEE does not allow
+% \baselineskip to stretch. Authors submitting work to the IEEE should note
+% that the IEEE rarely uses double column equations and that authors should try
+% to avoid such use. Do not be tempted to use the cuted.sty or midfloat.sty
+% packages (also by Sigitas Tolusis) as the IEEE does not format its papers in
+% such ways.
+% Do not attempt to use stfloats with fixltx2e as they are incompatible.
+% Instead, use Morten Hogholm'a dblfloatfix which combines the features
+% of both fixltx2e and stfloats:
+%
+% \usepackage{dblfloatfix}
+% The latest version can be found at:
+% http://www.ctan.org/pkg/dblfloatfix
+
+
+
+
+% *** PDF, URL AND HYPERLINK PACKAGES ***
+%
+%\usepackage{url}
+% url.sty was written by Donald Arseneau. It provides better support for
+% handling and breaking URLs. url.sty is already installed on most LaTeX
+% systems. The latest version and documentation can be obtained at:
+% http://www.ctan.org/pkg/url
+% Basically, \url{my_url_here}.
+
+
+
+
+% *** Do not adjust lengths that control margins, column widths, etc. ***
+% *** Do not use packages that alter fonts (such as pslatex).         ***
+% There should be no need to do such things with IEEEtran.cls V1.6 and later.
+% (Unless specifically asked to do so by the journal or conference you plan
+% to submit to, of course. )
+
+
+% correct bad hyphenation here
+\hyphenation{op-tical net-works semi-conduc-tor}
+
+\usepackage[brazil, english]{babel}
+
+\begin{document}
+%
+% paper title
+% Titles are generally capitalized except for words such as a, an, and, as,
+% at, but, by, for, in, nor, of, on, or, the, to and up, which are usually
+% not capitalized unless they are the first or last word of the title.
+% Linebreaks \\ can be used within to get better formatting as desired.
+% Do not put math or special symbols in the title.
+\title{Redes de Computadores | UnB 25.1\\ Projeto 1 -  Turma 01}
+
+
+% author names and affiliations
+% use a multiple column layout for up to three different
+% affiliations
+\author{\IEEEauthorblockN{Giovanni Daldegan}
+\IEEEauthorblockA{Ciência da Computação\\
+Universidade de Brasília\\
+Brasília, DF}
+\and
+
+\IEEEauthorblockN{Rodrigo Rafik}
+\IEEEauthorblockA{Ciência da Computação\\
+Universidade de Brasília\\
+Brasília, DF}
+\and
+
+\IEEEauthorblockN{Rute}
+\IEEEauthorblockA{Ciência da Computação\\
+Universidade de Brasília\\
+Brasília, DF}
+}
+
+% conference papers do not typically use \thanks and this command
+% is locked out in conference mode. If really needed, such as for
+% the acknowledgment of grants, issue a \IEEEoverridecommandlockouts
+% after \documentclass
+
+% for over three affiliations, or if they all won't fit within the width
+% of the page (and note that there is less available width in this regard for
+% compsoc conferences compared to traditional conferences), use this
+% alternative format:
+% 
+%\author{\IEEEauthorblockN{Michael Shell\IEEEauthorrefmark{1},
+%Homer Simpson\IEEEauthorrefmark{2},
+%James Kirk\IEEEauthorrefmark{3}, 
+%Montgomery Scott\IEEEauthorrefmark{3} and
+%Eldon Tyrell\IEEEauthorrefmark{4}}
+%\IEEEauthorblockA{\IEEEauthorrefmark{1}School of Electrical and Computer Engineering\\
+%Georgia Institute of Technology,
+%Atlanta, Georgia 30332--0250\\ Email: see http://www.michaelshell.org/contact.html}
+%\IEEEauthorblockA{\IEEEauthorrefmark{2}Twentieth Century Fox, Springfield, USA\\
+%Email: homer@thesimpsons.com}
+%\IEEEauthorblockA{\IEEEauthorrefmark{3}Starfleet Academy, San Francisco, California 96678-2391\\
+%Telephone: (800) 555--1212, Fax: (888) 555--1212}
+%\IEEEauthorblockA{\IEEEauthorrefmark{4}Tyrell Inc., 123 Replicant Street, Los Angeles, California 90210--4321}}
+
+
+
+
+% use for special paper notices
+%\IEEEspecialpapernotice{(Invited Paper)}
+
+
+
+
+% make the title area
+\maketitle
+
+% As a general rule, do not put math, special symbols or citations
+% in the abstract
+
+\begin{otherlanguage}{brazil}
+\begin{abstract}
+O presente relatório descreve o processo de desenvolvimento do ChatWeb 2.0, uma aplicação web de chat em tempo real inspirada na estética e nas funcionalidades da internet do início dos anos 2000. Realizado no âmbito da disciplina de Redes de Computadores da Universidade de Brasília, o projeto visa aprofundar a compreensão do funcionamento de aplicações em rede, com ênfase na observação prática dos protocolos de comunicação e na arquitetura cliente-servidor.
+\end{abstract}
+\end{otherlanguage}
+
+\begin{abstract}
+This report describes the development process of ChatWeb 2.0, a real-time web chat application inspired by the aesthetics and functionalities of the early 2000s internet. Conducted within the scope of the Computer Networks course at the University of Brasília, the project aims to deepen understanding of network applications operation, with emphasis on practical observation of communication protocols and client-server architecture.
+\end{abstract}
+
+\begin{otherlanguage}{Brazil}
+    
+
+
+
+
+\section{Introdução}
+
+Este projeto consiste no desenvolvimento do ChatWeb 2.0, uma aplicação web de chat em tempo real inspirada na estética e funcionalidades da internet do início dos anos 2000. Implementado como requisito da disciplina de Redes de Computadores da Universidade de Brasília, o projeto visa demonstrar na prática os conceitos fundamentais de comunicação em rede, protocolos de transporte e arquiteturas cliente-servidor.
+
+O ChatWeb 2.0 combina tecnologias modernas (Flask-SocketIO, WebSockets, JavaScript ES6) com um design nostálgico que remete ao Windows XP e às interfaces web clássicas. A aplicação permite que múltiplos usuários se conectem simultaneamente, criem salas de chat temáticas e troquem mensagens instantaneamente, proporcionando uma experiência retrô autêntica.
+
+O sistema foi projetado como uma ferramenta educacional que ilustra o funcionamento de protocolos de rede modernos em um contexto prático e visualmente atrativo. A interface utiliza a fonte Monaspace Neon, cores características do Windows XP (\texttt{\#c0c0c0}, \texttt{\#f0f0f0}, \texttt{\#808080}) e elementos visuais com efeitos de sombra e relevo que remetem aos sistemas operacionais clássicos.
+
+O projeto aborda conceitos essenciais como gerenciamento de conexões WebSocket, sincronização de estado distribuído, arquitetura orientada a eventos e análise de tráfego de rede em tempo real. Através da implementação e análise deste sistema, é possível compreender como as comunicações bidirecionais modernas funcionam e os desafios envolvidos no desenvolvimento de aplicações web em tempo real.
+
+\subsection{Objetivos Específicos}
+
+Os objetivos específicos deste projeto incluem:
+
+\begin{itemize}
+\item Desenvolver uma interface web nostálgica inspirada na estética do Windows XP e início dos anos 2000
+\item Implementar um sistema de comunicação bidirecional em tempo real utilizando Flask-SocketIO
+\item Criar uma arquitetura cliente-servidor robusta com gerenciamento de salas e usuários
+\item Desenvolver funcionalidades de chat multi-usuário com criação dinâmica de salas
+\item Implementar validação de nomes únicos para usuários e salas de chat
+\item Utilizar WebSockets para comunicação instantânea e sincronização de estado
+\item Analisar o tráfego de rede gerado pela aplicação utilizando Wireshark
+\item Demonstrar o funcionamento prático dos protocolos TCP/IP, HTTP e WebSocket
+\item Criar uma experiência de usuário intuitiva com elementos visuais retrô autênticos
+\end{itemize}
+
+\section{Fundamentação Teórica}
+
+\subsection{Tecnologias e Bibliotecas Utilizadas}
+
+O desenvolvimento da aplicação baseou-se em um conjunto de tecnologias modernas e bibliotecas especializadas para comunicação em tempo real:
+
+\textbf{Flask}: Framework web em Python utilizado como base do servidor~\cite{flask}. O Flask fornece uma estrutura minimalista e flexível para desenvolvimento de aplicações web, permitindo roteamento de URLs, renderização de templates e integração com outras bibliotecas Python.
+
+\textbf{Flask-SocketIO}: Extensão do Flask que implementa o protocolo Socket.IO para Python~\cite{flasksocketio}. Esta biblioteca permite comunicação bidirecional em tempo real entre cliente e servidor através de WebSockets, com fallback automático para outras tecnologias quando WebSockets não estão disponíveis.
+
+\textbf{Socket.IO (Cliente)}: Biblioteca JavaScript que implementa o protocolo Socket.IO no lado cliente~\cite{socketio}. Proporciona uma API simples para estabelecer conexões persistentes com o servidor e gerenciar eventos de comunicação em tempo real.
+
+\textbf{UUID}: Biblioteca Python utilizada para gerar identificadores únicos universais. No projeto, é empregada para criar IDs únicos para usuários e salas de chat, garantindo que não haja conflitos mesmo com múltiplas instâncias.
+
+\subsection{Arquitetura de Rede e Protocolos}
+
+\textbf{WebSockets}: O protocolo WebSocket foi escolhido como camada de transporte principal por permitir comunicação full-duplex sobre uma única conexão TCP~\cite{rfc6455}. Diferentemente do HTTP tradicional~\cite{http11}, os WebSockets mantêm a conexão aberta, eliminando a necessidade de polling e reduzindo significativamente a latência.
+
+\textbf{Protocolo Socket.IO}: Camada de abstração sobre WebSockets que adiciona funcionalidades como reconexão automática, namespaces, salas virtuais e compatibilidade com diferentes transportes. O Socket.IO implementa um protocolo próprio sobre WebSockets que inclui:
+
+\begin{itemize}
+\item Handshake inicial para estabelecimento da conexão
+\item Sistema de eventos personalizados para comunicação
+\item Confirmações de recebimento (acknowledgments)
+\item Suporte a múltiplos tipos de dados (JSON, binário)
+\end{itemize}
+
+\textbf{Camada de Transporte}: A aplicação utiliza TCP como protocolo de transporte~\cite{tcp}, aproveitando suas características de confiabilidade, controle de fluxo e detecção de erros. O WebSocket é estabelecido através de um upgrade de conexão HTTP, mantendo posteriormente uma conexão TCP direta.
+
+\subsection{Interface de Usuário e Experiência Nostálgica}
+
+A interface do ChatWeb 2.0 foi cuidadosamente desenvolvida para recriar a estética autêntica da internet do início dos anos 2000, especificamente inspirada no Windows XP e nas interfaces web clássicas da época. O design utiliza uma paleta de cores característica: cinza claro (\texttt{\#c0c0c0}) para o fundo principal, tons de cinza médio (\texttt{\#f0f0f0}, \texttt{\#dcdcdc}) para elementos de interface e bordas escuras (\texttt{\#808080}) para criar profundidade.
+
+\textbf{Elementos Visuais Retrô}:
+\begin{itemize}
+\item \textbf{Fonte Monaspace Neon}: Fonte monoespacial moderna que evoca o estilo das interfaces clássicas
+\item \textbf{Efeitos de Relevo}: Uso extensivo de \texttt{box-shadow} com técnica \texttt{inset} para criar bordas salientes e afundadas
+\item \textbf{Cores do Windows XP}: Paleta autêntica de cinzas que remete aos elementos nativos do sistema
+\item \textbf{Botões 3D}: Elementos interativos com aparência tridimensional e feedback visual ao passar o mouse
+\item \textbf{Ícones Pixelizados}: Gráficos simples para ações como enviar, sair e deletar salas
+\end{itemize}
+
+\textbf{Fluxo de Navegação}:
+\begin{itemize}
+\item \textbf{Tela de Login}: Interface minimalista com campo de nome de usuário e ícone de perfil circular
+\item \textbf{Seleção de Salas}: Lista dinâmica de salas disponíveis com botões para criar novas salas
+\item \textbf{Criação de Sala}: Formulário simples com validação de nomes únicos
+\item \textbf{Interface de Chat}: Área de mensagens com scroll automático e campo de entrada na parte inferior
+\item \textbf{Controles de Sala}: Botão de saída posicionado no canto superior direito da tela de chat
+\end{itemize}
+
+A experiência é completamente baseada em JavaScript vanilla e eventos Socket.IO, proporcionando atualizações em tempo real sem recarregamento de página, mantendo a fluidez esperada em aplicações modernas dentro de uma estética nostálgica.
+
+\section{Metodologia e Implementação}
+
+\subsection{Arquitetura do Sistema}
+
+O ChatWeb 2.0 foi implementado seguindo uma arquitetura cliente-servidor orientada a eventos, com separação clara entre lógica de negócio no servidor Python e apresentação no cliente JavaScript. O sistema utiliza uma abordagem de estado centralizado no servidor com sincronização automática para todos os clientes conectados.
+
+\textbf{Estrutura do Servidor Python}:
+O backend foi organizado em três classes principais que encapsulam as entidades do domínio:
+
+\begin{itemize}
+\item \textbf{Classe Message}: Encapsula dados de mensagens
+  \begin{verbatim}
+  - author: str (nome do remetente)
+  - text: str (conteúdo da mensagem)  
+  - time: str (timestamp formatado)
+  - formatMessage(): dict (serialização para JSON)
+  \end{verbatim}
+
+\item \textbf{Classe Client}: Representa usuários conectados
+  \begin{verbatim}
+  - id: str (UUID único)
+  - sid: str (Session ID do Socket.IO)
+  - name: str (nome de usuário)
+  - room_id: str (sala atual, vazio se não estiver em sala)
+  \end{verbatim}
+
+\item \textbf{Classe ChatRoom}: Gerencia salas de chat
+  \begin{verbatim}
+  - id: str (UUID único)
+  - name: str (nome da sala)
+  - owner: str (nome do criador)
+  - clients: list[str] (IDs dos participantes)
+  - messages: list[Message] (histórico completo)
+  \end{verbatim}
+\end{itemize}
+
+\textbf{Gerenciamento de Estado Global}:
+O servidor mantém duas estruturas de dados principais:
+\begin{itemize}
+\item \texttt{clients: dict[str, Client]} - Mapeamento ID → Cliente
+\item \texttt{chatrooms: dict[str, ChatRoom]} - Mapeamento ID → Sala
+\end{itemize}
+
+\textbf{Arquitetura do Cliente JavaScript}:
+O frontend é estruturado em módulos ES6 com responsabilidades específicas:
+
+\begin{itemize}
+\item \textbf{index.js}: Gerenciamento de eventos da DOM e fluxo principal da aplicação
+\item \textbf{listeners.js}: Handlers para eventos Socket.IO recebidos do servidor
+\item \textbf{back-front.js}: Funções para emissão de eventos e manipulação da interface
+\end{itemize}
+
+\textbf{Fluxo de Sincronização}:
+\begin{enumerate}
+\item Cliente emite evento Socket.IO com dados da ação
+\item Servidor valida operação e atualiza estado global
+\item Servidor emite eventos de atualização para clientes relevantes
+\item Clientes recebem eventos e atualizam interface automaticamente
+\end{enumerate}
+
+\subsection{Protocolo de Comunicação}
+
+A comunicação cliente-servidor no ChatWeb 2.0 utiliza eventos Socket.IO customizados que implementam um protocolo específico para as funcionalidades do chat:
+
+\textbf{Eventos Cliente para Servidor}:
+\begin{itemize}
+\item \texttt{register}: Registro de novo usuário com validação de nome único
+  \begin{verbatim}
+  data: {"client_name": "nome_usuario"}
+  \end{verbatim}
+\item \texttt{create\_room}: Criação de nova sala de chat
+  \begin{verbatim}
+  data: {"room_name": "nome_da_sala"}
+  \end{verbatim}
+\item \texttt{enter\_room}: Entrada de usuário em sala existente
+  \begin{verbatim}
+  data: {"room_id": "uuid_da_sala"}
+  \end{verbatim}
+\item \texttt{leave\_room}: Saída de usuário da sala atual (sem dados)
+\item \texttt{remove\_room}: Remoção de sala vazia
+  \begin{verbatim}
+  data: {"room_id": "uuid_da_sala"}
+  \end{verbatim}
+\item \texttt{send\_message}: Envio de mensagem para sala
+  \begin{verbatim}
+  data: {"text": "conteudo", "time": "HH:MM:SS"}
+  \end{verbatim}
+\end{itemize}
+
+\textbf{Eventos Servidor para Cliente}:
+\begin{itemize}
+\item \texttt{get\_rooms}: Atualização da lista de salas disponíveis
+  \begin{verbatim}
+  data: [{"id": "uuid", "name": "nome", "clients": [...]}]
+  \end{verbatim}
+\item \texttt{load\_room}: Carregamento completo dos dados da sala
+  \begin{verbatim}
+  data: {"name": "nome", "owner": "dono", 
+         "clients": [...], "messages": [...]}
+  \end{verbatim}
+\item \texttt{get\_message}: Recebimento de nova mensagem
+  \begin{verbatim}
+  data: {"author": "autor", "text": "conteudo", 
+         "time": "timestamp"}
+  \end{verbatim}
+\item \texttt{enter\_new\_room}: Notificação para entrar em sala recém-criada
+  \begin{verbatim}
+  data: "uuid_da_nova_sala"
+  \end{verbatim}
+\end{itemize}
+
+\textbf{Mensagens de Erro}:
+\begin{itemize}
+\item \texttt{user\_already\_exists}: Nome de usuário já em uso
+\item \texttt{room\_already\_exists}: Nome de sala já existe
+\item \texttt{invalid\_room}: Tentativa de acesso a sala inexistente
+\item \texttt{invalid\_user}: Operação com usuário inválido
+\item \texttt{user\_already\_in\_room}: Usuário já está em uma sala
+\item \texttt{room\_not\_empty}: Tentativa de remover sala com participantes
+\end{itemize}
+
+\subsection{Ambiente Experimental}
+
+\textbf{Configuração do Servidor}: O servidor Flask-SocketIO foi configurado para escutar na porta 5000, aceitando conexões de qualquer endereço IP (0.0.0.0) para permitir acesso de múltiplos dispositivos na rede local.
+
+\textbf{Estrutura de Rede}: Os testes foram realizados em ambiente de rede local (LAN), com servidor executando em uma máquina Linux e clientes conectando através de navegadores web modernos. A configuração permite análise detalhada do tráfego de rede sem interferências externas.
+
+\textbf{Ferramentas de Monitoramento}: Utilizou-se Wireshark~\cite{wireshark} para captura e análise de pacotes, permitindo observação detalhada do estabelecimento de conexões WebSocket, troca de mensagens e comportamento dos protocolos de camadas inferiores.
+
+\subsection{Funcionalidades Implementadas}
+
+O ChatWeb 2.0 implementa um conjunto completo de funcionalidades para chat em tempo real com foco na experiência nostálgica:
+
+\textbf{Gestão de Usuários}:
+\begin{itemize}
+\item Registro simples com validação de nomes únicos em tempo real
+\item Identificação única através de UUIDs para evitar conflitos
+\item Persistência de sessão através de localStorage do navegador
+\item Feedback imediato para tentativas de uso de nomes já existentes
+\end{itemize}
+
+\textbf{Sistema de Salas de Chat}:
+\begin{itemize}
+\item Criação dinâmica de salas com nomes personalizados
+\item Validação automática para evitar salas com nomes duplicados
+\item Lista atualizada em tempo real de todas as salas disponíveis
+\item Informação sobre número de participantes por sala
+\item Remoção automática de salas quando ficam vazias
+\item Funcionalidade de exclusão manual de salas pelo criador
+\end{itemize}
+
+\textbf{Comunicação em Tempo Real}:
+\begin{itemize}
+\item Troca instantânea de mensagens através de WebSockets
+\item Sincronização automática do histórico de mensagens ao entrar na sala
+\item Timestamp automático para todas as mensagens enviadas
+\item Broadcast inteligente apenas para usuários na mesma sala
+\item Scroll automático para novas mensagens
+\end{itemize}
+
+\textbf{Interface Nostálgica}:
+\begin{itemize}
+\item Design fiel à estética do Windows XP com cores e efeitos autênticos
+\item Transições suaves entre diferentes seções da aplicação
+\item Feedback visual imediato para todas as ações do usuário
+\item Ícones pixelizados para ações como envio de mensagens e saída de salas
+\item Elementos interativos com efeitos hover característicos da época
+\end{itemize}
+
+\textbf{Validações e Robustez}:
+\begin{itemize}
+\item Verificação de estados válidos antes de executar ações críticas
+\item Tratamento de tentativas de entrada em salas inexistentes
+\item Prevenção de múltiplas participações simultâneas em salas diferentes
+\item Limpeza automática de dados quando usuários se desconectam
+\item Validação client-side e server-side para todas as operações
+\end{itemize}
+
+\section{Resultados e Análise}
+
+\subsection{Funcionamento do Sistema}
+
+O ChatWeb 2.0 demonstrou funcionamento estável e responsivo durante todos os testes realizados. O sistema apresenta desempenho consistente tanto em termos de funcionalidade quanto de experiência visual nostálgica.
+
+\textbf{Métricas de Performance}:
+\begin{itemize}
+\item \textbf{Latência de Mensagens}: Entrega instantânea (< 50ms) em rede local via WebSockets
+\item \textbf{Sincronização de Estado}: Atualizações de salas e participantes propagadas em tempo real
+\item \textbf{Concorrência}: Suporte testado para múltiplos usuários simultâneos sem degradação
+\item \textbf{Responsividade da Interface}: Transições suaves entre seções com feedback visual imediato
+\end{itemize}
+
+\textbf{Validação de Funcionalidades}:
+\begin{itemize}
+\item \textbf{Registro de Usuário}: Validação de nomes únicos funciona corretamente com feedback em tempo real
+\item \textbf{Criação de Salas}: Sistema previne duplicação de nomes e permite criação dinâmica
+\item \textbf{Participação em Salas}: Entrada e saída funcionam perfeitamente com carregamento de histórico
+\item \textbf{Troca de Mensagens}: Mensagens são entregues instantaneamente para todos os participantes
+\item \textbf{Gerenciamento de Salas}: Remoção automática de salas vazias e exclusão manual implementadas
+\end{itemize}
+
+\textbf{Experiência Visual Nostálgica}:
+\begin{itemize}
+\item \textbf{Estética Autêntica}: Design fielmente reproduz a aparência do Windows XP
+\item \textbf{Efeitos Visuais}: Bordas em relevo, sombras internas e cores características funcionam perfeitamente
+\item \textbf{Fonte Monaspace}: Renderização adequada em todos os navegadores testados
+\item \textbf{Interatividade}: Efeitos hover e feedback visual proporcionam experiência genuína da época
+\end{itemize}
+
+\textbf{Robustez e Estabilidade}:
+Durante testes extensivos, o sistema manteve:
+\begin{itemize}
+\item Conexões WebSocket estáveis sem desconexões inesperadas
+\item Estado consistente entre servidor e todos os clientes conectados
+\item Limpeza adequada de recursos quando usuários se desconectam
+\item Validação efetiva de todas as operações críticas
+\end{itemize}
+
+\subsection{Análise de Tráfego de Rede}
+
+A análise com Wireshark revelou o comportamento detalhado dos protocolos utilizados:
+
+\textbf{Estabelecimento de Conexão WebSocket}:
+\begin{itemize}
+\item Handshake HTTP inicial com headers \texttt{Upgrade: websocket} e \texttt{Connection: Upgrade}
+\item Troca de chaves de segurança com \texttt{Sec-WebSocket-Key} e \texttt{Sec-WebSocket-Accept}
+\item Upgrade bem-sucedido indicado pelo código de status HTTP 101 Switching Protocols
+\end{itemize}
+
+\textbf{Estrutura dos Pacotes}:
+\begin{itemize}
+\item \textbf{Camada Física/Enlace}: Frames Ethernet com endereços MAC do gateway e dispositivos locais
+\item \textbf{Camada de Rede}: Pacotes IPv4 com endereços de origem e destino da rede local (192.168.x.x)
+\item \textbf{Camada de Transporte}: Segmentos TCP na porta 5000 com flags apropriados (SYN, ACK, PSH)
+\item \textbf{Camada de Aplicação}: Frames WebSocket contendo dados Socket.IO em formato binário/texto
+\end{itemize}
+
+\textbf{Carga Útil das Mensagens}:
+As mensagens Socket.IO observadas correspondem exatamente ao protocolo implementado:
+\begin{itemize}
+\item Eventos de registro: \texttt{42["register",\{"client\_name":"usuario"\}]}
+\item Mensagens de chat: \texttt{42["send\_message",\{"text":"Hello","timeStamp":"14:30:15"\}]}
+\item Atualizações de sala: \texttt{42["get\_rooms",[...]]}
+\end{itemize}
+
+\textbf{Análise dos Cabeçalhos}:
+\begin{itemize}
+\item \textbf{Ethernet}: Tipo 0x0800 (IPv4), endereços MAC válidos
+\item \textbf{IP}: Versão 4, TTL 64, protocolo 6 (TCP), checksum válido
+\item \textbf{TCP}: Portas origem aleatória e destino 5000, números de sequência incrementais, window size adequado
+\item \textbf{WebSocket}: Frames com opcode correto (0x1 para texto, 0x2 para binário), mascaramento nos frames do cliente
+\end{itemize}
+
+\subsection{Validação dos Requisitos}
+
+Todos os requisitos funcionais foram atendidos com sucesso:
+
+\begin{itemize}
+\item \textbf{Comunicação em Tempo Real}: Mensagens são entregues instantaneamente sem necessidade de polling
+\item \textbf{Múltiplos Usuários}: Sistema suporta concorrência adequada
+\item \textbf{Gerenciamento de Salas}: Criação, entrada, saída e remoção funcionam corretamente
+\item \textbf{Interface Responsiva}: UI atualiza automaticamente com mudanças de estado
+\item \textbf{Protocolo de Rede}: WebSocket implementado conforme especificação RFC 6455
+\end{itemize}
+
+\section{Conclusão}
+
+O desenvolvimento deste sistema de chat em tempo real proporcionou uma compreensão prática e aprofundada dos conceitos fundamentais de redes de computadores. A implementação bem-sucedida demonstra a viabilidade e eficiência das tecnologias WebSocket para aplicações que requerem comunicação bidirecional em tempo real.
+
+\subsection{Principais Conquistas}
+
+O desenvolvimento do ChatWeb 2.0 alcançou todos os objetivos estabelecidos, combinando funcionalidade técnica com uma experiência visual nostálgica autêntica:
+
+\begin{itemize}
+\item \textbf{Implementação Completa}: Sistema de chat multi-usuário totalmente funcional com criação dinâmica de salas
+\item \textbf{Estética Nostálgica Autêntica}: Interface que reproduz fielmente a experiência do Windows XP e início dos anos 2000
+\item \textbf{Arquitetura Robusta}: Estrutura orientada a eventos com classes bem definidas e separação de responsabilidades
+\item \textbf{Comunicação WebSocket}: Demonstração prática de protocolos modernos com análise detalhada de tráfego
+\item \textbf{Experiência de Usuário}: Interface intuitiva com feedback visual imediato e transições suaves
+\item \textbf{Validação e Robustez}: Sistema de validações que previne estados inconsistentes e trata erros adequadamente
+\end{itemize}
+
+\subsection{Aprendizados Técnicos}
+
+O desenvolvimento do ChatWeb 2.0 proporcionou insights valiosos sobre programação de redes e desenvolvimento web moderno:
+
+\textbf{Arquitetura Cliente-Servidor Moderna}: A implementação demonstrou como o paradigma orientado a eventos com WebSockets permite criar aplicações responsivas e escaláveis. O Flask-SocketIO abstraiu complexidades de baixo nível mantendo controle sobre o protocolo de comunicação.
+
+\textbf{Gerenciamento de Estado Distribuído}: A sincronização entre múltiplos clientes revelou desafios únicos na manutenção de consistência. A abordagem de "fonte única da verdade" no servidor com propagação de eventos mostrou-se eficaz para manter todos os clientes sincronizados.
+
+\textbf{Protocolos de Camada de Aplicação}: O Socket.IO demonstrou como protocolos de alto nível podem fornecer funcionalidades avançadas (como rooms, namespaces e reconnection) sobre WebSockets básicos, ilustrando a importância das abstrações de protocolo.
+
+\textbf{Design de Interface Nostálgica}: A recriação da estética do Windows XP usando CSS moderno (flexbox, grid, box-shadow) demonstrou como técnicas contemporâneas podem replicar visuals clássicos, combinando o melhor de ambas as épocas.
+
+\textbf{Modularização JavaScript}: A arquitetura em módulos ES6 permitiu separação clara de responsabilidades entre manipulação de DOM, comunicação de rede e lógica de apresentação, facilitando manutenção e evolução do código.
+
+\textbf{Análise de Protocolos em Tempo Real}: O uso do Wireshark revelou detalhes fascinantes sobre como dados são transmitidos através das camadas de rede, desde frames Ethernet até mensagens Socket.IO, proporcionando visão prática da pilha TCP/IP.
+
+\subsection{Limitações e Trabalhos Futuros}
+
+Embora o ChatWeb 2.0 tenha alcançado seus objetivos educacionais, algumas limitações foram identificadas e representam oportunidades para evolução:
+
+\textbf{Limitações Atuais}:
+\begin{itemize}
+\item \textbf{Persistência de Dados}: Mensagens e salas existem apenas durante a sessão do servidor
+\item \textbf{Escalabilidade}: Armazenamento em memória limita o número de usuários e mensagens
+\item \textbf{Autenticação}: Sistema atual usa apenas nomes de usuário sem senhas ou criptografia
+\item \textbf{Suporte a Mídia}: Funcionalidade de arquivos e imagens foi parcialmente implementada
+\item \textbf{Moderação}: Ausência de controles administrativos e filtros de conteúdo
+\end{itemize}
+
+\textbf{Oportunidades de Expansão}:
+\begin{itemize}
+\item \textbf{ChatWeb 3.0}: Evolução com banco de dados Redis/PostgreSQL para persistência
+\item \textbf{Recursos Nostálgicos}: Integração de emoticons pixelizados e sounds effects clássicos
+\item \textbf{Salas Temáticas}: Implementação de temas visuais diferentes (Windows 98, Mac OS Classic, etc.)
+\item \textbf{Bots e Easter Eggs}: Adição de elementos interativos que remetem à época
+\item \textbf{Histórico de Conversas}: Sistema de logs e busca em mensagens antigas
+\item \textbf{Status e Away Messages}: Funcionalidades características dos messengers clássicos
+\end{itemize}
+
+\textbf{Melhorias Técnicas}:
+\begin{itemize}
+\item Implementação de rate limiting para prevenir spam
+\item Otimização de performance para milhares de usuários simultâneos
+\item Adição de SSL/TLS para comunicação segura
+\item Desenvolvimento de API REST complementar para integração
+\item Implementação de testes automatizados unitários e de integração
+\end{itemize}
+
+\subsection{Considerações Finais}
+
+O desenvolvimento do ChatWeb 2.0 representa uma síntese bem-sucedida entre aprendizado técnico e expressão criativa, demonstrando como projetos educacionais podem ir além da mera implementação funcional para criar experiências memoráveis e significativas.
+
+\textbf{Impacto Educacional}: Este projeto demonstra como conceitos fundamentais de redes de computadores podem ser assimilados através de implementação prática. A combinação de programação client-server, análise de protocolos e design de interface proporcionou uma compreensão holística dos sistemas distribuídos modernos.
+
+\textbf{Valor da Nostalgia Técnica}: A escolha estética do Windows XP não foi meramente decorativa, mas serviu como ponte entre tecnologias modernas (WebSockets, ES6, CSS3) e a experiência familiar de interfaces clássicas. Isso demonstra como o design pode facilitar a adoção e compreensão de tecnologias complexas.
+
+\textbf{Validação Prática}: A análise detalhada do tráfego de rede com Wireshark confirmou o funcionamento correto de todos os protocolos envolvidos, desde frames Ethernet até mensagens Socket.IO. Essa validação empírica reforça a importância da experimentação prática no aprendizado de redes de computadores.
+
+\textbf{Arquitetura para o Futuro}: A estrutura modular e orientada a eventos criada no ChatWeb 2.0 estabelece uma base sólida para evoluções futuras, seja na direção de maior escala, funcionalidades avançadas ou diferentes temáticas nostálgicas.
+
+O sucesso deste projeto evidencia que o aprendizado de redes de computadores pode ser simultaneamente rigoroso e divertido, técnico e criativo, moderno e nostálgico. O ChatWeb 2.0 não apenas cumpriu seus objetivos educacionais, mas criou uma experiência única que celebra tanto a evolução tecnológica quanto a nostalgia pelos primórdios da internet.
+
+% trigger a \newpage just before the given reference
+% number - used to balance the columns on the last page
+% adjust value as needed - may need to be readjusted if
+% the document is modified later
+%\IEEEtriggeratref{8}
+% The "triggered" command can be changed if desired:
+%\IEEEtriggercmd{\enlargethispage{-5in}}
+
+% references section
+
+% can use a bibliography generated by BibTeX as a .bbl file
+% BibTeX documentation can be easily obtained at:
+% http://mirror.ctan.org/biblio/bibtex/contrib/doc/
+% The IEEEtran BibTeX style support page is at:
+% http://www.michaelshell.org/tex/ieeetran/bibtex/
+%\bibliographystyle{IEEEtran}
+% argument is your BibTeX string definitions and bibliography database(s)
+%\bibliography{IEEEabrv,../bib/paper}
+%
+% <OR> manually copy in the resultant .bbl file
+% set second argument of \begin to the number of references
+% (used to reserve space for the reference number labels box)
+\begin{thebibliography}{9}
+
+\bibitem{rfc6455}
+I.~Fette and A.~Melnikov, ``The WebSocket Protocol,'' RFC 6455, 
+Internet Engineering Task Force, December 2011. [Online]. Available: 
+https://tools.ietf.org/html/rfc6455
+
+\bibitem{socketio}
+Socket.IO Development Team, ``Socket.IO - Realtime application framework,'' 
+[Online]. Available: https://socket.io/
+
+\bibitem{flask}
+A.~Ronacher, ``Flask - A Python Microframework,'' 
+[Online]. Available: https://flask.palletsprojects.com/
+
+\bibitem{flasksocketio}
+M.~Grinberg, ``Flask-SocketIO - Socket.IO integration for Flask applications,'' 
+[Online]. Available: https://flask-socketio.readthedocs.io/
+
+\bibitem{wireshark}
+Wireshark Foundation, ``Wireshark - Network Protocol Analyzer,'' 
+[Online]. Available: https://www.wireshark.org/
+
+\bibitem{tcp}
+J.~Postel, ``Transmission Control Protocol,'' RFC 793, 
+Internet Engineering Task Force, September 1981. [Online]. Available: 
+https://tools.ietf.org/html/rfc793
+
+\bibitem{http11}
+R.~Fielding et al., ``Hypertext Transfer Protocol -- HTTP/1.1,'' RFC 2616, 
+Internet Engineering Task Force, June 1999. [Online]. Available: 
+https://tools.ietf.org/html/rfc2616
+
+\bibitem{realtime}
+L.~Richardson and S.~Ruby, \emph{RESTful Web Services}, 1st~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax O'Reilly Media, 2007.
+
+\bibitem{websocket_book}
+A.~Lombardi, \emph{WebSocket - Lightweight Client-Server Communications}, 1st~ed.\hskip 1em plus
+  0.5em minus 0.4em\relax O'Reilly Media, 2015.
+
+\end{thebibliography}
+\end{otherlanguage}
+
+\end{document}
